@@ -121,6 +121,10 @@ button.start .white {
 	font-weight: bold;
 	text-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
+a {
+	text-decoration: none;
+	color:#FFFFFF;
+}
 
 button.start:hover {
  	opacity: 0.8;
