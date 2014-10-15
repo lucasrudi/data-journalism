@@ -1,5 +1,10 @@
-<h3> Capture </h3>
-<h1>  <strong> {{city | uppercase}}   </strong> </h1>
-
-<h1> {{processor.volume}}</h1>
-<h3> noise </h3>
+<div class="page-check us">
+	<div class="region">
+		<span class="icon-micro"></span>
+		<h2>{{city | uppercase}}  </h2>
+	</div>
+	<button class="start"><span class="white">start</span><span class="black"></span></button>
+	<div class="decibels">
+		{{processor.volume}} DB
+	</div>
+</div>
