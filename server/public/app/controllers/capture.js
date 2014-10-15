@@ -2,16 +2,19 @@
 
 /* Controllers */
 angular.module('ssApp.controllers')
-  .controller('captureController', function($scope, $routeParams, $location, $route) {
+  .controller('captureController', function($scope, $routeParams, $location,$interval, $route) {
   	$scope.city = $routeParams.city;
   	var socket = io('http://localhost:3000');
   	
 
-  	socket.emit('some-noise', 
+  	$interval(function(){
+
+  		socket.emit('some-noise', 
   		{ 
   			city:$routeParams.city, 
-  			value : 3
+  			volume : window.volume.toFixed(3) * 100,
   		});
+  	},1000);
 
 	navigator.getUserMedia = (navigator.getUserMedia ||
 	                          navigator.webkitGetUserMedia ||
@@ -20,7 +23,16 @@ angular.module('ssApp.controllers')
 
 	 	
 	var onStream =function(stream) {
-		console.log('streaming!');
+		// Create an AudioNode from the stream.
+		var audioContext = new AudioContext();
+    	var mediaStreamSource = audioContext.createMediaStreamSource(stream);
+
+    	// Create a new volume meter and connect it.
+		createAudioMeter(audioContext);
+		mediaStreamSource.connect($scope.processor);
+
+    // kick off the visual updating
+
 	};
 
 	var onStreamError = function(e) {
@@ -28,12 +40,56 @@ angular.module('ssApp.controllers')
 	};
 
 	navigator.getUserMedia({audio: true, video:false}, 
-		function(mediaStream) {
-   			console.log('yes');
-	}, function (e){
-		console.log('there was an error: ',e);
+	onStream, function (e){
+		console.log('there was an error',e)
 	});
 
+    // monkeypatch Web Audio
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+	
+	var createAudioMeter = function(audioContext){
+		var processor = audioContext.createScriptProcessor(512);
+		processor.onaudioprocess = volumeAudioProcess;
+		processor.clipping = false;
+		processor.lastClip = 0;
+		processor.volume = 0;
+		processor.clipLevel = 0.98;
+		processor.averaging = 0.95;
+		processor.clipLag = 750;
+
+		// this will have no effect, since we don't copy the input to the output,
+		// but works around a current Chrome bug.
+		processor.connect(audioContext.destination);
+
+		$scope.processor = processor;
+
+	}
+
+	function volumeAudioProcess( event ) {
+		var buf = event.inputBuffer.getChannelData(0);
+	    var bufLength = buf.length;
+		var sum = 0;
+	    var x;
+
+		// Do a root-mean-square on the samples: sum up the squares...
+	    for (var i=0; i<bufLength; i++) {
+	    	x = buf[i];
+	    	if (Math.abs(x)>=this.clipLevel) {
+	    		$scope.processor.clipping = true;
+	    		$scope.processor.lastClip = window.performance.now();
+	    	}
+	    	sum += x * x;
+	    }
+
+	    // ... then take the square root of the sum.
+	    var rms =  Math.sqrt(sum / bufLength);
+
+	    // Now smooth this out with the averaging factor applied
+	    // to the previous sample - take the max here because we
+	    // want "fast attack, slow release."
+	    $scope.processor.volume = Math.max(rms, $scope.processor.volume*$scope.processor.averaging);
+	    window.volume = $scope.processor.volume;
+	}
 
 });
   	
