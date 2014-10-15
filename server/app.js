@@ -64,13 +64,10 @@
             receivedData = '';
             var obj = {};
             obj.value = sendData;
-            console.log("sendData: " + sendData);
-            messureModel.value = sendData;
-            console.log('sending', sendData);
-            lastMeasure = {
-              value: sendData,
-              created: Date.now() 
-            };
+            obj.created = Date.now();
+            obj.ip = data.socket.remoteAddress;
+            
+            
             var messureModel = new messure(obj);
             messureModel.save();
           }
