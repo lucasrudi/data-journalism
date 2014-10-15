@@ -37,9 +37,8 @@ var io = require('socket.io')(server);
 io.on('connection', function (socket) {
   console.log('new connection');
   socket.on('some-noise', function (data) {
+      console.log(data);
       io.emit('new-noise', data);
   }); 
     
 });
-
-
