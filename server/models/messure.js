@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
 
 var messureSchema = Schema({
   value: Number,
-  created: { type: Date, default: Date.now }
+  created: { type: Date, default: Date.now },
+  ip: String
 }, {
   collection: 'messures'
 });
