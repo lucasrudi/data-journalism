@@ -6,7 +6,7 @@ var express = require('express'),
     router = require('./routes'),
     http = require('http'),
     path = require('path');
-var io = require('socket.io')(http);
+
 
 var app = express();
 
@@ -32,6 +32,8 @@ var server =http.createServer(app);
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+//setup sockets
+var io = require('socket.io')(server);
 io.on('connection', function (socket) {
   console.log('new connection');
   socket.on('some-noise', function (data) {

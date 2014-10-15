@@ -27,6 +27,6 @@
     "mongoose-schema-extend": "~0.1.7",
     "mongoose-when": "*",
     "request": "~2.37.0",
-    "socket.io": "*"
+    "socket.io": "1.0"
   }
 }

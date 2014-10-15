@@ -57,10 +57,6 @@ Client.prototype.setup = function(){
 
 Client.prototype.connect = function(name){
   debug('connecting to namespace %s', name);
-  if (!this.server.nsps[name]) {
-    this.packet({ type: parser.ERROR, nsp: name, data : 'Invalid namespace'});
-    return;
-  }
   var nsp = this.server.of(name);
   if ('/' != name && !this.nsps['/']) {
     this.connectBuffer.push(name);
@@ -72,9 +68,9 @@ Client.prototype.connect = function(name){
     self.sockets.push(socket);
     self.nsps[nsp.name] = socket;
 
-    if ('/' == nsp.name && self.connectBuffer.length > 0) {
+    if ('/' == nsp.name && self.connectBuffer) {
       self.connectBuffer.forEach(self.connect, self);
-      self.connectBuffer = [];
+      delete self.connectBuffer;
     }
   });
 };
