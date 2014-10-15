@@ -1,5 +1,5 @@
 {
-  "name": "kit-de-medicion",
+  "name": "sensor-headline",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -26,7 +26,6 @@
     "mongoose-schema-extend": "~0.1.7",
     "mongoose-when": "*",
     "request": "~2.37.0",
-    "socket.io": "*",
-    "serialport": "*"
+    "socket.io": "*"
   }
 }

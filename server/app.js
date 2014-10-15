@@ -5,9 +5,10 @@
   var express = require('express'),
       router = require('./routes'),
       http = require('http'),
-//      mongo = require('./models/mongo-core'),
-      path = require('path');
-      // messure = require('./models/messure');
+      mongo = require('./models/mongo-core'),
+      path = require('path'),
+      messure = require('./models/messure');
+  var io = require('socket.io')(http);
 
   var app = express();
   
@@ -48,30 +49,31 @@
   
 
 
-  var SerialPort = require("serialport").SerialPort;
-  //Reemplazalo con el tuyo :)
-  var port = "/dev/cu.usbmodemfa141";
-  var serialPort = new SerialPort(port, {
-      baudrate: 9600
-  });
+  
   var receivedData = '';
-  serialPort.on("open", function() {
+  io.on("open", function() {
       console.log('Arudino online!');
-      serialPort.on('data', function(data) {
+      io.on('data', function(data) {
           
 
           receivedData += data.toString();
           console.log(receivedData);
           if (receivedData .indexOf('E') >= 0 && receivedData .indexOf('B') >= 0) {
            // save the data between 'B' and 'E'
-             sendData = receivedData .substring(receivedData .indexOf('B') + 1, receivedData .indexOf('E'));
-             receivedData = '';
-             console.log('sending', sendData);
-               lastMeasure = {
-                value: sendData,
-                created: Date.now() 
-              };
-           }
+            sendData = receivedData .substring(receivedData .indexOf('B') + 1, receivedData .indexOf('E'));
+            receivedData = '';
+            var obj = {};
+            obj.value = sendData;
+            console.log("sendData: " + sendData);
+            messureModel.value = sendData;
+            console.log('sending', sendData);
+            lastMeasure = {
+              value: sendData,
+              created: Date.now() 
+            };
+            var messureModel = new messure(obj);
+            messureModel.save();
+          }
 
       });
 
