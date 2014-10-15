@@ -1,8 +1,24 @@
-<script type="text/javascript" src="js/capture.js"></script>
-<device type="media" onchange="update(this.data)"></device>
-<video autoplay></video>
-<script>
-  
 
-  
-</script>
+<!DOCTYPE html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>R/GA Global Noise Round</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/stylesheets/style.css">
+
+	</head>
+	<body>
+		<div class="container">
+		<div ng-app="ssApp">
+			<div ng-view ></div>
+		</div>
+	</body>
+	<script src="/bower_components/angular/angular.js"></script>
+	<script src="/bower_components/angular-route/angular-route.js"></script>
+	<script src="/app/app.js"></script>
+	<script src="/app/controllers/home.js"></script>
+	<script src="/app/controllers/capture.js"></script>
+	<script src="/app/controllers/live.js"></script>
+</html>
