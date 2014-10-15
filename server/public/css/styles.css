@@ -156,12 +156,14 @@ button.start:hover {
 	position: relative;
 	padding: 1.2em;
 	border-radius: 15px;
-	border: 1px dotted #ad3228;
+	border: 1px dotted #000;
 	font-size: 1.1em;
-	color: #ad3228;
+	color: #000;
 	margin: 0.3em auto;
 	width: 220px;
+	opacity: 0.3;
 }
+
 
 @-webkit-keyframes micro-anim {
     0% {opacity: 1;}
