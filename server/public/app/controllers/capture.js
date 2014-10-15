@@ -12,43 +12,28 @@ angular.module('ssApp.controllers')
   			city:$routeParams.city, 
   			value : 3
   		});
-  	
 
-  	var vgaConstraints = {
-	  video: {
-	    mandatory: {
-	      maxWidth: 1,
-	      maxHeight: 1
-	    }
-	  }
+	navigator.getUserMedia = (navigator.getUserMedia ||
+	                          navigator.webkitGetUserMedia ||
+	                          navigator.mozGetUserMedia ||
+	                          navigator.msGetUserMedia);
+
+	 	
+	var onStream =function(stream) {
+		console.log('streaming!');
 	};
 
-	navigator.getMedia = ( navigator.getUserMedia ||
-	                       navigator.webkitGetUserMedia ||
-	                       navigator.mozGetUserMedia ||
-	                       navigator.msGetUserMedia);
+	var onStreamError = function(e) {
+	  console.error('Error getting microphone', e);
+	};
 
-	navigator.getMedia (
-	   // constraints
-	   {
-	      video: false,
-	      audio: true
-	   },
+	navigator.getUserMedia({audio: true, video:false}, 
+		function(mediaStream) {
+   			console.log('yes');
+	}, function (e){
+		console.log('there was an error: ',e);
+	});
 
-	   // successCallback
-	   function(localMediaStream) {
-	      var video = document.querySelector('video');
-	      video.src = window.URL.createObjectURL(localMediaStream);
-	      video.onloadedmetadata = function(e) {
-	         console.log(e);
-	      };
-	   },
 
-	   // errorCallback
-	   function(err) {
-	    console.log("Ocurrió el siguiente error: " + err);
-	   }
-
-	);
- });
+});
   	
