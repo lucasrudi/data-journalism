@@ -16,7 +16,7 @@ angular.module('ssApp.controllers')
     citymap['sp'] = 'São Paulo';
     citymap['stk'] = 'Stockholm';
   	citymap['bc'] = 'Bucarest';
-  	
+
 
   	$interval(function(){
       if (window.volume) {
