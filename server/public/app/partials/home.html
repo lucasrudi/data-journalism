@@ -1,10 +1,11 @@
 <div class="page-home">
 	<nav>
 		<ul class="select-country">
-			 <li class="animate-repeat" ng-repeat="cityitem in cities" ng-class="cityitem.class"> 
-			 	<a href="#" ng-href="#/capture/{{cityitem.endpoint}}">{{cityitem.name}}</a> 
+			<a href="#" ng-href="#/capture/{{cityitem.endpoint}}" ng-repeat="cityitem in cities" >
+			 <li class="animate-repeat" ng-class="cityitem.class"> 
+			 	{{cityitem.name}}
 			 </li>
-			
+			</a> 
 		</ul>
 	</nav>
 </div>
