@@ -1,19 +1,21 @@
 {
-  "name": "kit_de_medicion",
+  "name": "sensors",
   "version": "0.0.1",
-  "homepage": "https://github.com/lucasrudi/kit_de_medicion",
   "authors": [
-    "Lucas Rudi <rudilucas@gmail.com>",
-    "Davo Galavotti <davidgalavotti@gmail.com>"
+    "martin <martin.rabagglia@rga.com>",
+    "lucas <lucas.rudi@rga.com>"
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
-    "public"
+    "public",
+    "bower_components",
+    "test",
+    "tests"
   ],
-  "dependencies": {
-    "bourbon": "~4.0.2",
-    "d3": "~3.4.11"
-  }
+  "moduleType": [
+    "node"
+  ],
+  "private": true
 }

@@ -5,13 +5,13 @@
 
   var margin = 30,
   width = parseInt(d3.select("#chart").style("width")) - margin * 2,
-  height = parseInt(d3.select("#chart").style("height")) - margin * 2;
+  height = parseInt(d3.select("#chart").style("height")) - (margin )  * 2;
   
   var data = [];
 
   var loadData =function loadData(callback) {
-    d3.json("/api/v1/", function(error, datajson) {
-      data.push(datajson.value);
+    d3.json("/live2", function(error, datajson) {
+      data.push(datajson.data);
       d3.map(data);
       
 
@@ -31,7 +31,7 @@
   .range([0, width]);
 
   var y = d3.scale.linear()
-  .domain([-5, 500])
+  .domain([0, 50])
   .range([height, 0])
   .nice();
 
