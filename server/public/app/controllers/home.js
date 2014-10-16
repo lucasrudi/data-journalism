@@ -10,6 +10,7 @@ angular.module('ssApp.controllers')
         {'class': 'ba', 'name': 'Buenos Aires', 'endpoint' :'ba'},
         {'class': 'ln', 'name': 'London', 'endpoint' :'lnd'},
         {'class': 'sy', 'name': 'Sydney', 'endpoint' :'syd'},
-        {'class': 'sp', 'name': 'São Paulo', 'endpoint' :'sp'}
+        {'class': 'sp', 'name': 'São Paulo', 'endpoint' :'sp'},
+        {'class': 'sk', 'name': 'Stockholm', 'endpoint' :'stx'}
       ];
  });
