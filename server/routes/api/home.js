@@ -1,5 +1,4 @@
-var request = require('request'),
-    messure = require('../../models/messure'),
+var messure = require('../../models/messure'),
     config = require('../../config');
 
 var home = function (req, res) {
