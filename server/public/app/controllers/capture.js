@@ -14,7 +14,8 @@ angular.module('ssApp.controllers')
     citymap['lnd'] = 'London';
     citymap['snd'] = 'Sydney';
     citymap['sp'] = 'São Paulo';
-    citymap['stk'] = 'Stocolmo';
+    citymap['stk'] = 'Stockholm';
+  	citymap['bc'] = 'Bucarest';
   	
 
   	$interval(function(){

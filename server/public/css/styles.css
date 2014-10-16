@@ -91,8 +91,11 @@ h2 {
 }
 
 
-.st, .stk {
-	background: #30b966;
+.sk, .stk {
+	background: #323B7E;
+}
+.bc, .bcr {
+	background: #AE9411;
 }
 
 .great {
@@ -160,9 +163,11 @@ button.start:hover {
 	animation-timing-function: ease-in-out;
 	-webkit-animation-timing-function: ease-in-out;
 }
-
+.container{
+	max-width: 100%;
+}
 .region .icon-micro {
-	font-size: 18em;
+	font-size: 12em;
 }
 
 .region .icon-micro:before {
@@ -191,7 +196,7 @@ button.start:hover {
 
 @-webkit-keyframes micro-anim {
     0% {opacity: 1;}
-    50% {opacity: 0.8;}
+    50% {opacity: 0.5;}
     100% {opacity: 1;}
 }
 
