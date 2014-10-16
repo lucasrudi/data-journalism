@@ -8,12 +8,13 @@ angular.module('ssApp.controllers')
   	
 
   	$interval(function(){
-
-  		socket.emit('some-noise', 
-  		{ 
-  			city:$routeParams.city, 
-  			volume : window.volume.toFixed(3) * 100,
-  		});
+      if (window.volume) {
+              socket.emit('some-noise', 
+              { 
+                city: $routeParams.city, 
+                volume: window.volume.toFixed(3) * 100,
+              });
+      }
   	},1000);
 
 	navigator.getUserMedia = (navigator.getUserMedia ||

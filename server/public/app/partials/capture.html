@@ -1,10 +1,9 @@
 <div class="page-check" ng-class="city">
 	<div class="region">
 		<span class="icon-micro"></span>
-		<h2>{{city | uppercase}}  </h2>
+		<h2>{{city | uppercase}}</h2>
 	</div>
-	<button class="start"><span class="white">start</span><span class="black"></span></button>
 	<div class="decibels">
-		{{processor.volume}} DB
+		{{processor.volume * 100 | number:2}} DB
 	</div>
 </div>

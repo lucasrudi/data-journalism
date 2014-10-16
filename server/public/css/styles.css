@@ -58,6 +58,18 @@ h2 {
  	opacity: 0.8;
  }
 
+.ny , .nyc {
+	background: #f8183b;
+}
+
+.au , .atx{
+	background: #f82810;
+}
+
+.la {
+	background: #f8385e;
+}
+
 .us {
 	background: #f8483a;
 }
@@ -66,11 +78,11 @@ h2 {
 	background: #30b8d0;
 }
 
-.sy {
+.sy , .syd {
 	background: #225c9d;
 }
 
-.ln {
+.ln .lnd {
 	background: #0f498a;
 }
 
