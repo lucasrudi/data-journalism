@@ -16,6 +16,6 @@ angular.module('ssApp.controllers')
       error(function(data, status, headers, config) {
         // log error
       });
-    },1000);
+    },1500);
  });
   	
