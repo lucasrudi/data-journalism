@@ -90,8 +90,9 @@ h2 {
 	background: #3db966;
 }
 
-.sk {
-	background: #3db800;
+
+.st, .stk {
+	background: #30b966;
 }
 
 .great {
@@ -202,7 +203,7 @@ button.start:hover {
 }
 
 ul.result-chart {
-	width: 30%;
+	width: 40%;
 	display: inline-block;
 }
 
