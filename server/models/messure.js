@@ -3,9 +3,9 @@ var mongoose = require('mongoose'),
     ObjectId = Schema.ObjectId;
 
 var messureSchema = Schema({
-  value: Number,
+  volume: Number,
   created: { type: Date, default: Date.now },
-  ip: String
+  city: String
 }, {
   collection: 'messures'
 });

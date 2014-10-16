@@ -1,12 +1,8 @@
 <div class="page-result">
 		<ul class="result-chart">
-			<li>New York <span class="chart-number">57</span></li>
-			<li>Austin <span class="chart-number">35</span></li>
-			<li>Los Angeles <span class="chart-number">28</span></li>
-			<li>Buenos Aires <span class="chart-number">24</span></li>
-			<li>London <span class="chart-number">24</span></li>
-			<li>Sydney <span class="chart-number">18</span></li>
-			<li>São Paulo <span class="chart-number">10</span></li>
+			<li class="animate-repeat" ng-repeat="item in liveVolume" ng-class="item.city">
+				{{item.city}}<span class="chart-number">{{item.volume}}</span></li>
+			</li>
 		</ul>
 		<div class="result-comments">
 			<p>

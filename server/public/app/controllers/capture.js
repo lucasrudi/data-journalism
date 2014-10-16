@@ -4,7 +4,8 @@
 angular.module('ssApp.controllers')
   .controller('captureController', function($scope, $routeParams, $location,$interval, $route) {
   	$scope.city = $routeParams.city;
-  	var socket = io('http://localhost:3000');
+    var serverName = $location.protocol() + "://" + $location.host() + ":" + $location.port();
+  	var socket = io(serverName);
   	
 
   	$interval(function(){

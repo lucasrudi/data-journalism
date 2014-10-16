@@ -5,6 +5,8 @@
 var express = require('express'),
     router = require('./routes'),
     http = require('http'),
+    mongo = require('./models/mongo-core'),
+    messure = require('./models/messure'),
     path = require('path');
 
 
@@ -39,6 +41,10 @@ io.on('connection', function (socket) {
   socket.on('some-noise', function (data) {
       console.log(data);
       io.emit('new-noise', data);
+      var obj = data;
+      obj.created = Date.now();
+      var messureModel = new messure(obj);
+      messureModel.save();
   }); 
     
 });
