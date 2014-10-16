@@ -1,12 +1,12 @@
 <div class="page-result">
 		<ul class="result-chart">
-			<li class="animate-repeat" ng-repeat="item in liveVolume" ng-class="item.city">
-				{{item.city}}<span class="chart-number">{{item.volume}}</span></li>
+			<li class="animate-repeat" ng-repeat="item in liveVolume" ng-class="item._id.cityid">
+				{{item._id.city}}<span ng-class="item._id.cityid" class="chart-number">{{item.averageVolume | number:2}}</span></li>
 			</li>
 		</ul>
 		<div class="result-comments">
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis risus rutrum, lacinia diam vitae, sollicitudin eros. Nunc hendrerit vehicula vulputate. Pellentesque sit amet erat et quam sollicitudin laoreet ultrices semper neque. Morbi eget lacus fringilla, hendrerit risus vitae, interdum arcu
+				Well done <span class='great'> {{liveVolume[0]._id.city}}  </span> you are quite active, let's hear you <span class='notGreat'> {{liveVolume[liveVolume.length-1]._id.city}} </span>
 			</p>
 		</div>
 	</div>

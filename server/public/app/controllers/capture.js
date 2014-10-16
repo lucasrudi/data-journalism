@@ -6,13 +6,22 @@ angular.module('ssApp.controllers')
   	$scope.city = $routeParams.city;
     var serverName = $location.protocol() + "://" + $location.host() + ":" + $location.port();
   	var socket = io(serverName);
+    var citymap = {};
+    citymap['nyc'] = 'New York';
+    citymap['atx'] = 'Austin';
+    citymap['la'] = 'Los Angeles';
+    citymap['ba'] = 'Buenos Aires';
+    citymap['lnd'] = 'London';
+    citymap['snd'] = 'Sydney';
+    citymap['sp'] = 'São Paulo';
   	
 
   	$interval(function(){
       if (window.volume) {
               socket.emit('some-noise', 
               { 
-                city: $routeParams.city, 
+                city: citymap[$routeParams.city],
+                cityid: $routeParams.city,
                 volume: window.volume.toFixed(3) * 100,
               });
       }

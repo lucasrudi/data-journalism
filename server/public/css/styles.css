@@ -90,6 +90,13 @@ h2 {
 	background: #3db966;
 }
 
+.great {
+	font-size: 1.9em;
+}
+
+.notGreat {
+	font-size: 1.5em;
+}
 
 /* -------- Check */
 
@@ -196,7 +203,6 @@ ul.result-chart {
 }
 
 ul.result-chart li {
-	background: #000;
 	margin-bottom: 2px;
 	color: #fff;
 	padding: 1em;
@@ -209,7 +215,7 @@ span.chart-number {
 	position: absolute;
 	right: 0.5em;
 	display: block;
-	opacity: 0.4;
+	opacity: 0.8;
 	top: 0.5em;
 	font-size: 2em;
 }

@@ -13,7 +13,7 @@ module.exports.init = function (app) {
   Routes.home = require('./app/home');
   app.get('/', Routes.home);
   app.get('/live', function(req, res) {
-    messure.aggregate().sort('created').group({ _id: "$city" , averageVolume: { $last: "$volume" }}).exec( function(err, doc) {
+    messure.aggregate().sort('created').group({ _id: {city:"$city", cityid: "$cityid"} , averageVolume: { $last: "$volume" }}).sort('-averageVolume').exec( function(err, doc) {
      res.send(doc, 200);
     });
   });

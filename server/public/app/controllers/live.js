@@ -2,14 +2,20 @@
 
 /* Controllers */
 angular.module('ssApp.controllers')
-  .controller('liveController', function($scope, $routeParams, $location, $route) {
+  .controller('liveController', function($scope, $http, $routeParams, $location, $route, $interval) {
     
-    $http.get('live').
-    success(function(data, status, headers, config) {
-      $scope.liveVolume = data;
-    }).
-    error(function(data, status, headers, config) {
-      // log error
-    });
+    $interval(function(){
+      $http.get('live').
+      success(function(data, status, headers, config) {
+        $scope.liveVolume = data;
+        if(!$scope.$$phase) {
+          $scope.$apply();
+        }
+        
+      }).
+      error(function(data, status, headers, config) {
+        // log error
+      });
+    },1000);
  });
   	

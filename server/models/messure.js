@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 
 var messureSchema = Schema({
   volume: Number,
+  cityid: String, 
   created: { type: Date, default: Date.now },
   city: String
 }, {
