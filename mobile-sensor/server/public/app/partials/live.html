@@ -1,0 +1,14 @@
+<div class="page-result">
+	<ul class="result-chart">
+		<li class="animate-repeat" ng-repeat="item in liveVolume" ng-class="item._id.cityid">
+			{{item._id.city}}<span ng-class="item._id.cityid" class="chart-number">{{item.averageVolume | number:2}}</span></li>
+		</li>
+	</ul>
+	<div class="result-comments">
+		<p>
+			Bien  <span class='great'> {{first._id.city}}  </span> estan muy activos, 
+			pero... <span class='notGreat'> {{last._id.city}} 
+			</span>  estan quietos. Vamos, hagan ruido!
+		</p>
+	</div>
+</div>
